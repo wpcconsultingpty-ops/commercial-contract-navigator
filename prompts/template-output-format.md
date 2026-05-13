@@ -1,74 +1,113 @@
-# Template — Client Teaser Output Format
+# Template — Dual Output Format (Teaser + Full Report)
 
-IMPORTANT: This output is sent directly to the client as a lead-generation email. DO NOT provide detailed analysis, recommended amendments, fallback positions, or negotiation strategies. The purpose is to signal risk, create urgency, and prompt them to engage WPC Consulting for the full review.
+IMPORTANT: This prompt instructs you to produce TWO separate outputs in a single response.
 
-Produce your response in clean HTML suitable for email. Use the exact structure below.
+1. A CLIENT TEASER — sent to the customer to signal risk and drive them to engage WPC Consulting. No actionable detail.
+2. A FULL INTERNAL REPORT — sent only to WPC Consulting (russell.hopkins@wpcconsulting.com.au) with the complete commercial analysis.
+
+Produce both outputs in clean HTML. Separate them using the exact HTML comment markers shown below. Do not include any text outside these two sections.
 
 ---
 
-## SECTION 1 — Contract Snapshot
+<!-- TEASER_START -->
 
-Output the following as a simple HTML summary block:
+## TEASER SECTION (Client-Facing)
+
+Output content for the CLIENT EMAIL only. Rules:
+- DO NOT provide clause references, recommended amendments, fallback positions, negotiation strategies, or any actionable advice
+- Purpose: signal risk, create urgency, prompt them to book a call with WPC Consulting
+
+### Contract Snapshot
+Present as a simple HTML table:
 - Contract name: [from submission]
 - Contract type: [from submission]
 - Counterparty: [from submission]
-- Overall risk profile: [LOW / MEDIUM / HIGH / CRITICAL] — determined from your analysis
-- Total issues identified: [number] — count all issues found across all risk categories
+- Overall risk profile: [LOW / MEDIUM / HIGH / CRITICAL]
+- Total issues identified: [number] across [number] risk categories
 
----
+### Risk Signal Summary
+A 2-3 sentence plain-English paragraph:
+- Confirms the contract has been reviewed
+- States the overall risk level plainly
+- Notes how many issues were found across how many categories
+- NO clause names, numbers, or recommended actions
 
-## SECTION 2 — Risk Signal Summary
+### Risk Category Flags
+For each category where issues were found, output a single line:
+- [Category Name] — [SEVERITY] — [X] issue(s)
+Categories: Payment Terms, Liability & Indemnity, Termination Rights, IP Ownership, Variations & Change Management, Dispute Resolution, Insurance, General Commercial Risk
 
-Output a brief 2–3 sentence plain-English paragraph that:
-- Confirms you have reviewed the contract
-- States the overall risk level in plain language (e.g. "This contract carries a HIGH commercial risk profile")
-- Notes the number of issues identified across how many risk categories (e.g. "We identified 9 issues spanning 4 risk categories")
-- Does NOT name specific clauses, clause numbers, or provide any recommended actions
+### Sample Flag (Hook)
+Reveal ONE issue only — the most commercially significant. One sentence describing the risk in plain English. No clause reference, no fix.
+Format: "We identified a [SEVERITY] risk in [Category] — [one sentence on the commercial exposure]."
 
----
+### Closing Statement
+Output this verbatim (substitute bracketed values only):
+"Hi [First Name], your [Contract Type] with [Counterparty] has been assessed and we’ve found [X] commercial issues that need your attention before you sign or proceed. The full findings — including clause-by-clause analysis, recommended amendments, negotiation priorities, and our commercial advice — are ready and waiting. To receive your complete report and discuss your options, book a free 30-minute call with WPC Consulting below."
 
-## SECTION 3 — Risk Category Flags (Teaser Only)
+<!-- TEASER_END -->
 
-List the risk categories where issues were found. For each category:
-- Show the category name
-- Show the highest severity rating found in that category (LOW / MEDIUM / HIGH / CRITICAL)
-- Show the number of issues in that category
-- DO NOT describe the issues, name clauses, or provide any detail
+<!-- FULL_REPORT_START -->
 
-Format example (repeat for each affected category):
-- [Category Name] — [SEVERITY] — [X] issue(s) identified
+## FULL INTERNAL REPORT SECTION (WPC Consulting Only)
 
-Categories to check: Payment Terms, Liability & Indemnity, Termination Rights, IP Ownership, Variations & Change Management, Dispute Resolution, Insurance, General Commercial Risk
+Output the COMPLETE commercial analysis. This is a working document for Russell Hopkins as Commercial Manager. Be thorough and specific.
 
----
+### Executive Snapshot
+HTML table with:
+- Contract name
+- Party position (which party the client represents)
+- Contract type
+- Governing law / jurisdiction
+- Contract value (if stated or estimable)
+- Overall risk profile: LOW / MEDIUM / HIGH / CRITICAL
+- Total issues identified
+- Recommended action: ACCEPT / ACCEPT WITH AMENDMENTS / REJECT / ESCALATE
 
-## SECTION 4 — One Sample Flag (Hook)
+### Detailed Issues
+For EVERY issue found, output a block:
 
-Reveal ONE issue only — chosen as the most commercially significant. Provide:
-- Category: [category name]
-- Severity: [rating]
-- Flag: A single sentence describing the nature of the risk in plain English — no clause reference, no recommended action, no fix
+**Issue [number] — [title]**
+- Clause reference: [exact clause number and heading]
+- Risk rating: LOW / MEDIUM / HIGH / CRITICAL
+- Contract position: [what it currently says, plain English]
+- Why it matters: [commercial impact — financial, operational, legal]
+- Recommended amendment: [exact proposed wording or deletion]
+- Fallback position: [what to accept if preferred amendment is rejected]
+- Operational mitigation: [internal steps if clause cannot be changed]
+- Escalate for legal review: Yes/No — [reason]
 
-Example format:
-"We identified a [SEVERITY] risk in [Category] — [one sentence describing the commercial exposure without giving away the solution]."
+Include ALL issues. Group by risk category. Do not omit or summarise.
 
-Do not reveal any more than this one flag.
+### Negotiation Priorities
+Top 5 in order of commercial importance:
+- Priority 1: [issue title + why it’s the top priority]
+- Priority 2:
+- Priority 3:
+- Priority 4:
+- Priority 5:
 
----
+### Acceptance Conditions
+List all matters that could be accepted if pricing, exclusions, qualifications, or delivery controls are adjusted. State the matter and the condition for acceptance.
 
-## SECTION 5 — Closing Statement (Fixed Text)
+### Commercial Manager Notes
+3-5 strategic dot points for Russell Hopkins:
+- Key relationships and leverage points
+- Commercial risks to monitor during execution (not just at signing)
+- Suggested opening position for negotiations
+- Any red flags suggesting bad faith or unfair contract terms
+- Recommended sequence for raising issues
+- Flag any clauses that may constitute unfair contract terms under Australian Consumer Law
+- Reference applicable Australian standards (AS 4902, AS 4000, etc.) where relevant
 
-Output this exact paragraph verbatim, substituting only the bracketed values:
-
-"Hi [First Name], your [Contract Type] with [Counterparty] has been assessed and we've found [X] commercial issues that need your attention before you sign or proceed. The full findings — including clause-by-clause analysis, recommended amendments, negotiation priorities, and our commercial advice — are ready and waiting. To receive your complete report and discuss your options, book a free 30-minute call with WPC Consulting below."
+<!-- FULL_REPORT_END -->
 
 ---
 
 ## OUTPUT RULES
 
 - Respond in HTML only — no markdown, no plain text
-- Do not include any CSS, style tags, or inline styles (the email wrapper handles this)
-- Use <h2>, <p>, <ul>, <li>, <strong>, <br> tags only
-- Do not output Section headings as visible text — embed the content directly in the HTML structure
-- Never include: clause references, clause numbers, recommended amendments, fallback positions, negotiation strategies, acceptance conditions, or any actionable legal or commercial advice in this output
-- The full analysis is retained internally and sent separately to the WPC Consulting CC address
+- Do not include CSS, style tags, or html/body wrappers (the email node handles this)
+- Use <h2>, <h3>, <p>, <ul>, <li>, <strong>, <table>, <tr>, <td>, <br> tags
+- Start your response with <!-- TEASER_START --> and include both sections
+- Do NOT output anything outside the two comment-marked sections
